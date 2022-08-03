@@ -1,0 +1,801 @@
+* {
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*Set general style for the body and set the font family of the body to open sans*/
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  color: rgb(9, 16, 58);
+  font-size: 16px;
+  line-height: 1.8rem;
+}
+
+/*Animation for the header hero text. The text will slide in from the left*/
+@-webkit-keyframes slideInFromLeft {
+  0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+/*Animation for the button on the header. It will dissolve in slowly from the background */
+@-webkit-keyframes dissolveIn {
+  0%{
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100%{
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes dissolveIn {
+  0%{
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100%{
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+/* Set all heading font style to merriweather*/
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Merriweather', serif;
+}
+
+h2{
+  font-size: 1.8rem;
+  margin-bottom: 2.5rem;
+}
+
+/*******************NAVIGATION BAR STYLES - ON ALL PAGES ***********************/
+/*Flexbox layout on large screen size and collapsed on mobile with the help of javascript*/
+
+/* for small screens less than 725px */
+
+.navbar{
+    width: 100vw;
+    padding: 1rem 0 0 0.5rem;
+    background-color: rgb(34, 28, 91);
+    position: relative;
+}
+
+/*Set logo with responsive sizing so it scales based on the device width*/
+.logo{
+    width: clamp(100px, 30vw, 150px);
+}
+
+/*Make logo image responsive*/
+.logo img{
+    max-width: 100%;
+    height: auto;
+}
+
+/*Hide menu items by default on mobile. They will be 
+toggled on and off by the menu icons*/
+#nav_items{
+    list-style: none;
+    padding: 1.5rem 2rem 1.5rem 2rem;
+    display: none;
+    text-align: center;
+}
+
+/*Add smooth transition to menu items when they are hovered*/
+.nav-item{
+    padding-bottom: 2rem; 
+    -webkit-transition: all 0.5s; 
+    -o-transition: all 0.5s; 
+    transition: all 0.5s;    
+}
+
+/*Add hover effect to menu items (change color to gold)*/
+.nav-item:hover{
+  color:rgb(194, 178, 142) ;
+}
+
+.nav-items a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+/*General red button for all the pages with shadow effect*/
+.button{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(209, 14, 27);
+    padding: 0.6rem 0.8rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+              -webkit-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+              -webkit-transition: all 0.5s;
+              -o-transition: all 0.5s;
+              transition: all 0.5s;
+}
+
+/*Slightly increase the size of the button when hovered on*/
+.button:hover{
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+}
+
+/*Display menu icon by default on mobile screen*/
+.menu-icon{
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    margin: 1rem 2.5rem 0 0;
+}
+
+/*Hide close icon by default on mobile screen. It is displayed when the menu 
+icon is clicked on with the help of javascript*/
+#close_icon{
+    display: none;
+}
+
+/* for large screens > 725px */
+
+@media only screen and (min-width: 725px){
+    /*Flexbox layout to spread out icon and menu */
+    .navbar{
+        width: 100vw;
+        padding: 0.5rem 1.5rem 0 1.5rem;
+        background-color: rgb(34, 28, 91);
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+    
+    }
+
+    /*Flex box layout to spread out content of the menu 
+    and left margin to space them evenly*/
+    #nav_items{
+        list-style: none;
+        min-width: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+        font-size: 18px;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        padding: 0;
+        margin-left: 3rem;
+    }
+
+    #menu_icon{
+        display: none;
+    }
+    
+    .nav-item{
+        padding: 0;
+        margin-left: 1.5rem;
+    }
+
+    .nav-button{
+        margin-left: 1.5rem;
+    }
+
+    /*Different hover effect on large screens-a gold line under menu items. */
+    .nav-item:hover{
+      border-bottom: 2px solid rgb(194, 178, 142);
+      height: 1.8rem;
+      width: unset;
+      
+  }
+}
+
+
+
+/* *******************HEADER SECTION STYLE - ON ALL PAGES **********************/
+ /*Relative and absolute positioning is used here to place 
+ the t#hero text and button on the image. 
+ Flex box layout and margin is used to center the text and button*/
+
+/*  for small screen < 725px */
+
+header{
+  position: relative;
+  height: auto;
+}
+.hero-grp{
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   text-align: center;
+   width: 100%;
+   height: 100%;
+   margin: auto;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+       -ms-flex-direction: column;
+           flex-direction: column;
+   -webkit-box-align: center;
+       -ms-flex-align: center;
+           align-items: center;
+   -webkit-box-pack: center;
+       -ms-flex-pack: center;
+           justify-content: center;
+}
+
+header img{
+   width: 100%;
+   height: auto;
+}
+.hero-txt{
+   width: 100%;
+   text-align: center;
+   background-color: rgba(34, 28, 91, 0.9);
+   color: rgb(255, 255, 255);
+   padding: 1rem 1rem 1rem 1rem;
+   font-size: clamp(18px, 5vw, 30px);
+   -webkit-animation: 1s ease-out 0s 1 slideInFromLeft;
+           animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+.hero-button{
+   text-decoration: none;
+   color: white;
+   -webkit-animation: 1.5s ease-out 0s 1 dissolveIn;
+           animation: 1.5s ease-out 0s 1 dissolveIn;
+}
+
+/*  for big screen > 725px */
+
+@media only screen and (min-width: 725px){
+  header{
+   background-size: cover;
+   background-repeat: no-repeat;
+  }
+  .hero-txt{
+      width: 80%;
+      line-height: 2.5rem;
+      margin-top: 0;
+      padding: 1rem 5rem 1rem 5rem ;
+   }
+   
+}
+
+
+/* *******************INTRODUCTION SECTION STYLE - ON HOME PAGE **********************/
+/*Flexbox is used on large screens to arrange elements. On small screens they stack on each other*/
+
+/* for small screen < 725px */
+
+.intro-sect-img{
+  width: 100%;
+  height: auto;
+}
+
+.intro-sect{
+  padding: 4rem 2rem 4rem 2rem;
+}
+
+.intro-flex-container{
+  margin-top: 3rem;
+}
+/* for big screen < 725px */
+
+@media only screen and (min-width: 725px){
+  .intro-flex-container{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+  }
+  .intro-sect-grp{
+      width: 40%;
+  }
+  .img-container{
+      width: 50%;
+  }
+  .intro-sect h2{
+      text-align: center;
+  }
+}
+
+/* *******************RIDES AND FACILITIES SUMMARY SECTION STYLE - FOR HOME PAGE **********************/
+/*The contents stack on each other on small screens and
+ uses flex box to achieve the layout for big screens. 
+ It uses the row reverse property of flex to stagger the layout*/
+
+/* for small screens < 725px */
+
+.rides-sect-grp-img{
+  width: 100%;
+  height: auto;
+}
+.rides-sect{
+  padding: 1.5rem 2rem 1.5rem 2rem ;
+  background-color: rgba(9, 16, 58, 0.05);
+}
+.rides-sect-grp{
+  margin-top: 2rem;
+}
+
+/* for big screen < 725px */
+
+@media only screen and (min-width: 725px){
+  .rides-sect{
+      padding: 4rem 0 0rem 0;
+  }
+  .rides-sect-grp{
+      padding: 3rem 2rem 3rem 2rem ;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+  }
+  .rides-sect-grp:nth-child(odd){
+      background-color: rgba(34, 28, 91, 0.1);
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: reverse;
+          -ms-flex-direction: row-reverse;
+              flex-direction: row-reverse;
+  }
+  .rides-sect-grp-txt{
+      width: 45%;
+  }
+  .rides-sect-grp-img{
+      width: 45%;
+  }
+  .rides-sect h2{
+      text-align: center;
+  }
+}
+
+
+/* ******************* FAQ SECTION STYLE - ON ALL PAGES **********************/
+/*On small screens, they all stck on one another. On larger screens
+ grid layout is used to arrange them*/
+
+/* for small screens < 725px */
+
+.faq-sect{
+  padding: 4rem 2rem 4rem 2rem;
+  background-color:  rgba(209, 14, 27, 0.05);
+}
+
+/* for big screen < 725px */
+
+@media only screen and (min-width: 725px){
+  .faq-sect-grp-grid{
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto auto;
+      grid-gap: 0 2rem;
+  }
+  .faq-sect h2{
+      text-align: center;
+  }
+}
+
+/*******************CALL TO ACTION SECTION STYLES***********************/
+/* Flexbox layout with vertical direction on small screens
+ and horizontal direction on large screens*/
+
+/* for small screens < 725px */
+
+/*Elements in this section will stack on top of each other*/
+.cta-sect{
+  min-width: 100vw;
+  height: 15rem;
+  background-color: rgb(194, 178, 142);
+  padding: 0 2rem 0 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/*Set the buttons to stack on each other on small screens*/
+.cta-sect-btn-grp{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+          -ms-flex-pack: distribute;
+              justify-content: space-around;
+              height: 50%;
+}
+.cta-sect-btn-grp a{
+  text-decoration: none;
+}
+.cta-sect-btn{
+  background-color: rgb(255, 255, 255);
+  color: rgba(209, 14, 27 );
+  border: 1px solid rgb(209, 14, 27);
+}
+
+/* for big screens > 725px */
+@media only screen and (min-width: 725px){
+
+  /*Elements in this section will spread next to each other*/
+  .cta-sect{
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+      height: unset;
+      padding: 4rem 2rem 4rem 2rem;
+      
+  }
+
+  /*Set the buttons to be next to each other on big screens*/
+  .cta-sect-btn-grp{
+      height: unset;
+      width: 18rem;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+
+  }
+}
+
+/* ******************* CONTACT SECTION STYLE - ON ALL PAGES **********************/
+/*The form is styled using flex box with vertical direction on both
+ mobile and desktop devices. The section stacks on each other on mobile
+  as per the design, and grid is used to spread it out on larger devices*/
+
+/* for small screens < 725px */
+
+.contact-sect{
+  padding: 4rem 2rem 4rem 2rem;
+  background-color: rgb(34, 28, 91);
+  color: rgb(255, 255, 255);
+}
+.contact-sect-form{
+  margin: auto;
+  max-width: 60rem; 
+  background-color: rgb(194, 178, 142);
+  padding: 1rem 2rem 1.5rem 2rem; 
+   display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; 
+} 
+.contact-sect-form input, textarea{
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.contact-sect-form h3{
+  color: rgb(9, 16, 58);
+}
+::-webkit-input-placeholder{
+  color: rgba(209, 14, 27, 0.8);
+  font-style: italic;
+}
+::-moz-placeholder{
+  color: rgba(209, 14, 27, 0.8);
+  font-style: italic;
+}
+:-ms-input-placeholder{
+  color: rgba(209, 14, 27, 0.8);
+  font-style: italic;
+}
+::-ms-input-placeholder{
+  color: rgba(209, 14, 27, 0.8);
+  font-style: italic;
+}
+::placeholder{
+  color: rgba(209, 14, 27, 0.8);
+  font-style: italic;
+}
+.form-button{
+  text-align: center;
+  margin: 2rem auto 0 auto;
+  width: 10rem;
+}
+
+/* for big screen < 725px */
+
+@media only screen and (min-width: 725px){
+  .contact-sect-grp{
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: auto;
+      grid-gap: 2rem;
+  }
+
+  .contact-sect h2{
+      text-align: center;
+      margin-bottom: 2rem;
+  }
+
+  .contact-sect-form{
+      margin: 0;
+  }
+}
+
+
+/********************* FOOTER SECTION STYLE - ON ALL PAGES **********************/
+/*The navigation here stacks on each other on mobile but spreads 
+out using flex box on bigger devices. The social icons spreads out 
+using flex box on all devices and uses relative positioning to move 
+beside the copyright text on big devices*/
+
+/* for small screens < 725px */
+
+footer{
+  background-color: rgb(9, 16, 58);
+  padding: 4rem 2rem 4rem 2rem;
+  color: rgb(255, 255, 255);
+}
+.footer-nav-items{
+  margin-top: 2rem;
+  width: 70%;
+  list-style: none;
+}
+.footer-nav-item{
+  padding-bottom: 1.5rem;
+}
+.footer-nav-item a{
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+.footer-nav-item:hover{
+  color:rgb(194, 178, 142) ;
+}
+.social-sect{
+  margin-top: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.social-sect h3{
+  font-size: 0.8rem;
+}
+.social-icons{
+  width: 30px;
+  height: 30px;
+  margin-left: 1rem;
+  -webkit-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+}
+.social-icons:hover{
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
+  cursor: pointer;
+}
+footer hr{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.copyright-txt p{
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* for big screen < 725px */
+
+@media only screen and (min-width: 725px){
+  .footer-nav-items{
+      margin: 0 auto 0 auto;
+      width: 50%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  }
+  .social-sect{
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
+      position: relative;
+      z-index: 1;
+      bottom: -5rem;
+      right: 0;
+  }
+  .copyright-txt p{
+      text-align: left;
+      margin-top: 2rem;
+  }
+  .footer-nav-item:hover{
+    padding: unset;
+    background-color: unset;
+    height: 1.8rem;
+    border-bottom: 2px solid rgb(194, 178, 142);
+  }
+}
+
+
+/* *******************TICKETS SECTION STYLE - ON TICKETS.HTML  **********************/
+/*Grid layout is used here to distribute elements into three 
+columns on big screens. The elements stack on each other on small screens*/
+
+/* for small screens < 725px */
+
+.tickets-sect {
+    background-color: rgba(9, 16, 58, 0.05);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.tickets-sect-grp {
+    background-color: rgb(255, 255, 255);
+    max-width: 30rem;
+    height: auto;
+    margin: 0 auto 0 auto;
+    border: 1px solid rgba(9, 16, 58, 0.05);
+    padding-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: ease-in-out 0.5s;
+    -o-transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.5s;
+}
+
+.tickets-sect-grp:hover{
+  -webkit-transform: scale(1.01);
+      -ms-transform: scale(1.01);
+          transform: scale(1.01);
+}
+
+.tickets-sect-grp-title {
+  width: 100%;
+  background-color: rgb(34, 28, 91);
+  color: rgb(255, 255, 255);
+  padding: 1.5rem;
+  margin-top: -0.2rem;
+}
+
+.ticket-price-sect {
+  background-color: rgb(194, 178, 142);
+  padding: 0.3rem;
+  margin-top: -1.5rem;
+}
+
+.ticket-price {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.tickets-sect-desc ul {
+  list-style: none;
+  text-align: left;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.tickets-img-container {
+  width: 100%;
+  height: 250px;
+}
+
+.tickets-sect-grp-img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* for big screens > 725px */
+
+@media only screen and (min-width: 725px) {
+  .tickets-sect {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-gap: 1.5rem;
+  }
+}
+
+/* ******************* RIDES FACILITIES AND FOOD SECTION - ON RIDES.HTML **********************/
+/*The elements stack on one another on mobile. Grid layout is used to 
+arrange them into rows and columns on big devices*/
+
+/* for small screens < 725px */
+
+.rides-sectn-grp, .facilities-sect-grp{
+  background-color: rgb(255, 255, 255);
+  max-width: 40rem;
+  margin: auto;
+  border: 1px solid rgba(9, 16, 58, 0.05);
+  margin-bottom: 3rem;
+  color: inherit;
+}
+.rides-sectn-grp img, .facilities-sect-grp img{
+  width: 100%;
+  height: auto;
+}
+.rides-sectn, .facilities-sect{
+  padding: 1.5rem 2rem 1.5rem 2rem ;
+}
+.rides-sectn-grp-txt, .facilities-sect-grp-txt{
+  padding: 1rem;
+}
+.rides-sectn h2, .facilities-sect h2{
+  text-align: center;
+  margin: 3rem 0 3rem 0;
+}
+
+/* for big screen < 725px */
+
+@media only screen and (min-width: 725px){
+  .grid-container{
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      grid-gap: 2rem;
+  
+  }
+}
+
